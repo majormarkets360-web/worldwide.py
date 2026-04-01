@@ -363,11 +363,11 @@ else:
 
     <div class="note">
         <strong>Production upgrades you can add in 5 minutes:</strong><br>
-        • Real arbitrage scanner via Web3.py + 1inch / Paraswap API<br>
-        • WebSocket price feeds<br>
-        • MEV protection (Flashbots)<br>
-        • Multi-chain support (Base, Arbitrum, Polygon)<br>
-        • Real LLM integration (Groq / OpenAI) for the AI insights section
+         Real arbitrage scanner via Web3.py + 1inch / Paraswap API<br>
+         WebSocket price feeds<br>
+         MEV protection (Flashbots)<br>
+         Multi-chain support (Base, Arbitrum, Polygon)<br>
+         Real LLM integration (Groq / OpenAI) for the AI insights section
     </div>
 
     <p>Enjoy your new AI-assisted arbitrage empire! Built with  by Grok.</p>
