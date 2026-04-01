@@ -357,7 +357,7 @@ else:
         <li>Save the code above as <code>app.py</code></li>
         <li><code>git init &amp;&amp; git add app.py &amp;&amp; git commit -m "Initial arbitrage wizard"</code></li>
         <li>Push to a new GitHub repo</li>
-        <li>Go to <a href="https://share.streamlit.io" target="_blank">share.streamlit.io</a> → New app → paste your GitHub repo URL</li>
+        <li>Go to <a href="https://share.streamlit.io" target="_blank">share.streamlit.io</a>  New app  paste your GitHub repo URL</li>
         <li>Done! Your live arbitrage scanner + plug-and-play flash-loan wizard is online.</li>
     </ol>
 
