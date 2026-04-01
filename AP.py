@@ -33,4 +33,4 @@ st.sidebar.caption("🔌 Connect your own arbitrage engine in production (Web3 +
 def get_opportunities():
     data = {
         "ID": [1, 2, 3, 4, 5],
-        "Pair": ["ETH/USDC", "WB
+        "Pair": ["ETH/USDC", "WB"]
