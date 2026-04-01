@@ -1,6 +1,4 @@
-<DOCTYPE html>
-<html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>app.py - Crypto Arbitrage Scanner + Flash Loan Wizard</title>
@@ -9,9 +7,7 @@
         pre { background: #111; padding: 20px; border-radius: 8px; overflow-x: auto; }
         h1, h2 { color: #00ff9d; }
         .note { background: #1a1a1a; padding: 15px; border-left: 5px solid #00ff9d; margin: 20px 0; }
-    </style>
-</head>
-<body>
+ 
     <h1> Crypto Arbitrage Scanner + Flash Loan Wizard (Streamlit + GitHub Ready)</h1>
     <p><strong>Copy the entire code below into <code>app.py</code> and push to GitHub.</strong> Then deploy for free on <a href="https://share.streamlit.io" target="_blank">Streamlit Community Cloud</a> in one click.</p>
     <div class="note">
