@@ -15,11 +15,11 @@
     <h1> Crypto Arbitrage Scanner + Flash Loan Wizard (Streamlit + GitHub Ready)</h1>
     <p><strong>Copy the entire code below into <code>app.py</code> and push to GitHub.</strong> Then deploy for free on <a href="https://share.streamlit.io" target="_blank">Streamlit Community Cloud</a> in one click.</p>
     <div class="note">
-        ✅ <strong>Plug-and-play Solidity wizard</strong> included.<br>
-        ✅ Real-time mock scanner with filters (min profit, min confidence, tokens, exchanges).<br>
-        ✅ AI-assisted insights placeholder (easy to hook real LLM later).<br>
-        ✅ Fully self-contained single-file Solidity contracts with all interfaces, approvals &amp; flash-loan logic pre-built.<br>
-        ✅ Ethereum mainnet addresses already filled (Aave V3 + Balancer V2 + Uniswap V2 + Sushiswap).<br>
+         <strong>Plug-and-play Solidity wizard</strong> included.<br>
+         Real-time mock scanner with filters (min profit, min confidence, tokens, exchanges).<br>
+         AI-assisted insights placeholder (easy to hook real LLM later).<br>
+         Fully self-contained single-file Solidity contracts with all interfaces, approvals &amp; flash-loan logic pre-built.<br>
+         Ethereum mainnet addresses already filled (Aave V3 + Balancer V2 + Uniswap V2 + Sushiswap).<br>
         <br>
         <strong>Production tip:</strong> Replace the mock data with a real backend (1inch API, CCXT, Web3.py, or your own arbitrage engine).
     </div>
@@ -33,7 +33,7 @@ st.set_page_config(page_title="Arbitrage Scanner + Flash Loan Wizard", page_icon
 st.title(" Crypto Arbitrage Scanner + Flash Loan Wizard")
 st.markdown("**AI-assisted • Real-time opportunities • One-click Solidity flash-loan contracts**  \n*Built for GitHub + Streamlit*")
 
-# ====================== SIDEBAR FILTERS ======================
+# SIDEBAR FILTERS 
 st.sidebar.header("🔍 Filters")
 
 min_profit = st.sidebar.slider("Minimum Profit (%)", 0.0, 10.0, 1.0, 0.1)
@@ -48,7 +48,7 @@ selected_exchanges = st.sidebar.multiselect("Exchanges to monitor", all_exchange
 st.sidebar.markdown("---")
 st.sidebar.caption(" Connect your own arbitrage engine in production (Web3 + 1inch / CCXT)")
 
-# ====================== MOCK ARBITRAGE DATA (replace with real scanner) ======================
+#  MOCK ARBITRAGE DATA (replace with real scanner) 
 @st.cache_data(ttl=60)
 def get_opportunities():
     data = {
@@ -91,7 +91,7 @@ else:
         hide_index=True
     )
 
-# ====================== OPPORTUNITY SELECTOR ======================
+#  OPPORTUNITY SELECTOR
 st.markdown("---")
 st.subheader("🎯 Select an Opportunity to Execute")
 
@@ -106,7 +106,7 @@ if not df.empty:
    
     st.success(f"**Selected:** {opp['Pair']} • Buy on **{opp['Buy on']}** → Sell on **{opp['Sell on']}** • {opp['Profit %']}% profit @ {opp['Confidence %']}% confidence")
    
-    # ====================== AI-ASSISTED INSIGHTS ======================
+    #  AI-ASSISTED INSIGHTS 
     st.markdown("### 🤖 AI Insights (powered by your favorite LLM)")
     with st.expander("Click for instant AI analysis", expanded=True):
         st.markdown(f"""
@@ -118,7 +118,7 @@ if not df.empty:
         *Would you like me to generate a full execution plan?* (extend this section with LangChain/OpenAI in production)
         """)
    
-    # ====================== FLASH LOAN WIZARD ======================
+    # FLASH LOAN WIZARD 
     st.header("⚡ Flash Loan Wizard — Plug & Play Solidity Generator")
     st.caption("Choose provider → amount → token → generate complete contract with all approvals & interfaces")
 
@@ -158,8 +158,8 @@ if not df.empty:
 
     if st.button(" Generate Plug-and-Play Solidity Contract", type="primary", use_container_width=True):
         with st.spinner("Generating complete contract with all interfaces..."):
-            # ====================== SOLIDITY TEMPLATE (self-contained) ======================
-            contract_code = f'''// SPDX-License-Identifier: MIT
+            # SOLIDITY TEMPLATE (self-contained) 
+           contract_code = f'''// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
 /**
@@ -200,7 +200,7 @@ interface IBalancerVault {{
     ) external;
 }}
 
-// ====================== MAIN CONTRACT ======================
+//  MAIN CONTRACT 
 contract FlashLoanArbitrage {{
     address public immutable owner;
     address public constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -225,7 +225,7 @@ contract FlashLoanArbitrage {{
         _;
     }}
 
-    // ====================== AAVE V3 FLASH LOAN ENTRY ======================
+    //  AAVE V3 FLASH LOAN ENTRY 
     function executeArbitrageWithAave(uint256 amount, address borrowToken) external onlyOwner {{
         // Call Aave flash loan
         IAavePool(AAVE_POOL_ADDRESSES_PROVIDER).flashLoanSimple(
@@ -237,7 +237,7 @@ contract FlashLoanArbitrage {{
         );
     }}
 
-    // ====================== BALANCER V2 FLASH LOAN ENTRY ======================
+    // BALANCER V2 FLASH LOAN ENTRY 
     function executeArbitrageWithBalancer(uint256 amount, address borrowToken) external onlyOwner {{
         address[] memory tokens = new address[](1);
         tokens[0] = borrowToken;
@@ -247,7 +247,7 @@ contract FlashLoanArbitrage {{
         IBalancerVault(BALANCER_VAULT).flashLoan(address(this), tokens, amounts, abi.encode(borrowToken, amount));
     }}
 
-    // ====================== FLASH LOAN CALLBACK (AAVE) ======================
+    //  FLASH LOAN CALLBACK (AAVE) 
     function executeOperation(
         address asset,
         uint256 amount,
@@ -264,8 +264,8 @@ contract FlashLoanArbitrage {{
         return true;
     }}
 
-    // ====================== FLASH LOAN CALLBACK (BALANCER) ======================
-    function receiveFlashLoan(
+    // FLASH LOAN CALLBACK (BALANCER) 
+  function receiveFlashLoan(
         address[] calldata tokens,
         uint256[] calldata amounts,
         uint256[] calldata feeAmounts,
@@ -282,7 +282,7 @@ contract FlashLoanArbitrage {{
         IERC20(asset).transfer(BALANCER_VAULT, amount + premium);
     }}
 
-    // ====================== CORE ARBITRAGE LOGIC (Plug & Play) ======================
+    //  CORE ARBITRAGE LOGIC (Plug & Play) 
     function _performArbitrage(address asset, uint256 amount, uint256 premium) internal {{
         // 1. Approve routers
         IERC20(asset).approve(BUY_ROUTER, type(uint256).max);
@@ -344,7 +344,7 @@ contract FlashLoanArbitrage {{
                 use_container_width=True
             )
            
-            st.success("✅ Contract ready! Deploy on Remix, Hardhat or Foundry. All interfaces, approvals & flash-loan callbacks are included. No external dependencies.")
+            st.success(" Contract ready! Deploy on Remix, Hardhat or Foundry. All interfaces, approvals & flash-loan callbacks are included. No external dependencies.")
            
             st.info(" **Next steps:**\n1. Copy → Remix.ethereum.org\n2. Compile + Deploy\n3. Call `executeArbitrageWithAave` (or Balancer) with your chosen amount\n4. Profit is auto-sent to deployer wallet")
 
