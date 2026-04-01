@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>🚀 Crypto Arbitrage Scanner + Flash Loan Wizard (Streamlit + GitHub Ready)</h1>
+    <h1> Crypto Arbitrage Scanner + Flash Loan Wizard (Streamlit + GitHub Ready)</h1>
     <p><strong>Copy the entire code below into <code>app.py</code> and push to GitHub.</strong> Then deploy for free on <a href="https://share.streamlit.io" target="_blank">Streamlit Community Cloud</a> in one click.</p>
     <div class="note">
         ✅ <strong>Plug-and-play Solidity wizard</strong> included.<br>
@@ -28,9 +28,9 @@
 import pandas as pd
 from datetime import datetime
 
-st.set_page_config(page_title="Arbitrage Scanner + Flash Loan Wizard", page_icon="🚀", layout="wide")
+st.set_page_config(page_title="Arbitrage Scanner + Flash Loan Wizard", page_icon="", layout="wide")
 
-st.title("🚀 Crypto Arbitrage Scanner + Flash Loan Wizard")
+st.title(" Crypto Arbitrage Scanner + Flash Loan Wizard")
 st.markdown("**AI-assisted • Real-time opportunities • One-click Solidity flash-loan contracts**  \n*Built for GitHub + Streamlit*")
 
 # ====================== SIDEBAR FILTERS ======================
@@ -46,7 +46,7 @@ all_exchanges = ["Uniswap V2", "Sushiswap", "Uniswap V3", "Balancer V2", "Curve"
 selected_exchanges = st.sidebar.multiselect("Exchanges to monitor", all_exchanges, default=all_exchanges)
 
 st.sidebar.markdown("---")
-st.sidebar.caption("💡 Connect your own arbitrage engine in production (Web3 + 1inch / CCXT)")
+st.sidebar.caption(" Connect your own arbitrage engine in production (Web3 + 1inch / CCXT)")
 
 # ====================== MOCK ARBITRAGE DATA (replace with real scanner) ======================
 @st.cache_data(ttl=60)
@@ -81,7 +81,7 @@ def get_opportunities():
 
 df = get_opportunities()
 
-st.header("📊 Live Arbitrage Opportunities")
+st.header(" Live Arbitrage Opportunities")
 if df.empty:
     st.warning("No opportunities match your filters. Lower the thresholds!")
 else:
@@ -156,7 +156,7 @@ if not df.empty:
     buy_router = routers.get(opp["Buy on"], "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D")
     sell_router = routers.get(opp["Sell on"], "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F")
 
-    if st.button("🚀 Generate Plug-and-Play Solidity Contract", type="primary", use_container_width=True):
+    if st.button(" Generate Plug-and-Play Solidity Contract", type="primary", use_container_width=True):
         with st.spinner("Generating complete contract with all interfaces..."):
             # ====================== SOLIDITY TEMPLATE (self-contained) ======================
             contract_code = f'''// SPDX-License-Identifier: MIT
@@ -337,7 +337,7 @@ contract FlashLoanArbitrage {{
             st.code(contract_code, language="solidity")
            
             st.download_button(
-                label="📥 Download Full Contract (FlashLoanArbitrage.sol)",
+                label=" Download Full Contract (FlashLoanArbitrage.sol)",
                 data=contract_code,
                 file_name="FlashLoanArbitrage.sol",
                 mime="text/plain",
@@ -346,7 +346,7 @@ contract FlashLoanArbitrage {{
            
             st.success("✅ Contract ready! Deploy on Remix, Hardhat or Foundry. All interfaces, approvals & flash-loan callbacks are included. No external dependencies.")
            
-            st.info("🔑 **Next steps:**\n1. Copy → Remix.ethereum.org\n2. Compile + Deploy\n3. Call `executeArbitrageWithAave` (or Balancer) with your chosen amount\n4. Profit is auto-sent to deployer wallet")
+            st.info(" **Next steps:**\n1. Copy → Remix.ethereum.org\n2. Compile + Deploy\n3. Call `executeArbitrageWithAave` (or Balancer) with your chosen amount\n4. Profit is auto-sent to deployer wallet")
 
 else:
     st.info("Select an opportunity above to unlock the Flash Loan Wizard")
@@ -370,6 +370,6 @@ else:
         • Real LLM integration (Groq / OpenAI) for the AI insights section
     </div>
 
-    <p>Enjoy your new AI-assisted arbitrage empire! Built with ❤️ by Grok.</p>
+    <p>Enjoy your new AI-assisted arbitrage empire! Built with  by Grok.</p>
 </body>
 </html> 
