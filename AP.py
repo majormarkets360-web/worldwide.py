@@ -139,7 +139,7 @@ if not df.empty:
     if st.button("🚀 Generate Plug-and-Play Solidity Contract", type="primary", use_container_width=True):
         with st.spinner("Generating complete contract with all interfaces..."):
             # Generate contract using string formatting to avoid f-string conflicts
-            contract_code =  SPDX-License-Identifier: MIT
+            contract_code =  SPDX-License-Identifier MIT
 pragma solidity .8.24;
 
 /**
